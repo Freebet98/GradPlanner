@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 #url of list of classes
-url = "https://www.myu.umn.edu/psp/psprd/EMPLOYEE/CAMP/c/SA_LEARNER_SERVICES.CLASS_SEARCH.GBL"
+url = "https://cbs.umn.edu/academics/majors-and-minors"
 
 try:
     response = requests.get(url)
