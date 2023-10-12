@@ -2,17 +2,21 @@ import requests
 from bs4 import BeautifulSoup
 
 #url of list of classes
-url = "https://cbs.umn.edu/academics/majors-and-minors"
+url = "https://umtc.catalog.prod.coursedog.com/courses?page=1&cq="
 
 try:
     response = requests.get(url)
 
     if response.status_code == 200:
+        file = open('output.txt', 'w')
         soup = BeautifulSoup(response.text, 'html.parser')
-        text = soup.get_text()
-
-        with open('output.txt', 'w', encoding='utf-8') as file:
+        divs = soup.find_all('div')
+        for div in divs:
+            text = div.text
             file.write(text)
+            file.write("\n")
+
+        file.close()
 
         print("Text extracted and saved to 'output.txt'")
     else:
