@@ -1,0 +1,76 @@
+file_read = open("input.txt", "r")
+file_write = open("output.txt", "w")
+
+word = ""
+
+while 1:
+    char = file_read.read(1)
+    if not char:
+        break
+    else:
+        word += char
+    print(word)
+    if word == '{' or word == '"':
+        word = ""
+    elif word == 's' or word == 'c' or word == 'd' or word == 'su' or word == 'ca' \
+            or word == 'de' or word == 'sub' or word == 'cat' or word == 'des' \
+            or word == 'subj' or word == 'subje' or word == 'subjec' or word == 'subject' \
+            or word == 'subject_' or word == 'subject_i' or word == 'subject_id' \
+            or word == 'subject_id"' or word == 'subject_id":' or word == 'cata' \
+            or word == 'catal' or word == 'catalo' or word == 'catalog' \
+            or word == 'catalog_' or word == 'catalog_n' or word == 'catalog_nu' \
+            or word == 'catalog_num' or word == 'catalog_numb' or word == 'catalog_numbe' \
+            or word == 'catalog_number' or word == 'catalog_number"' or word == 'catalog_number":' \
+            or word == 'desc' or word == 'descr' or word == 'descri' or word == 'descrip' \
+            or word == 'descript' or word == 'descripti' or word == 'descriptio' \
+            or word == 'description' or word == 'description"' or word == 'description":' \
+            or word == 'cr' or word == 'cre' or word == 'cred' or word == 'credi' \
+            or word == 'credit' or word == 'credits' or word == 'credits_' or word == 'credits_m' \
+            or word == 'credits_ma' or word == 'credits_max' or word == 'credits_maxi' \
+            or word == 'credits_maxim' or word == 'credits_maximu' or word == 'credits_maximum' \
+            or word == 'credits_maximum"' or word == 'credits_maximum":' or word == 'p'\
+            or word == 'pr' or word == 'pre' or word == 'prer' or word == 'prere' or word == 'prereq'\
+            or word == 'prereq:':
+        continue
+    elif word == 'subject_id":"':
+        file_write.write("Subject ID: ")
+        file_write.write(file_read.read(4))
+        file_write.write('\n')
+        word = ""
+    elif word == 'catalog_number":"':
+        file_write.write("Catalog Number: ")
+        file_write.write(file_read.read(6))
+        file_write.write("\n")
+        word = ""
+    elif word == 'credits_maximum":"':
+        file_write.write("Credits: ")
+        file_write.write(file_read.read(1))
+        file_write.write("\n")
+        word = ""
+    elif word == "prereq: ":
+        file_write.write("Prereq: ")
+        file_write.write("\n")
+        word = ""
+    elif word == 'description":"':
+        file_write.write("Description: ")
+    # char_des = file_read.read(1)
+    # while(char_des != '"'):
+    #    file_write.write(char)
+        file_write.write("\n")
+        word = ""
+    else:
+        word = ""
+
+file_read.close()
+file_write.close()
+
+if word == 'subject_id":"':
+    file_write.write("Subject ID: ")
+    file_write.write(file_read.read(4))
+    file_write.write('\n')
+    word = ""
+if word == 'catalog_number":"':
+    file_write.write("Catalog Number: ")
+    file_write.write(file_read.read(4))
+    file_write.write("\n")
+    word = ""
