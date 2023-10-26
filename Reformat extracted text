@@ -1,0 +1,86 @@
+file_r = open("output.txt", 'r')
+file_w = open("written.txt", 'w')
+
+line = file_r.readline()
+print(line)
+while line:
+    if line[0:10] == 'Subject ID':
+        print(line)
+        file_w.write(line)
+        line = file_r.readline()
+        if line[0:14] == 'Catalog Number':
+            print(line)
+            file_w.write(line)
+            line = file_r.readline()
+            if line[0:11] == 'Description':
+                print(line)
+                file_w.write(line)
+                line = file_r.readline()
+                if line[0:7] == 'Credits':
+                    print(line)
+                    file_w.write(line)
+                    file_w.write('\n')
+                    line = file_r.readline()
+                    if line[0:6] == 'Prereq':
+                        print(line)
+                        file_w.write(line)
+                        file_w.write('\n')
+                        line = file_r.readline()
+                        continue
+                    else:
+                        print(line)
+                        line = file_r.readline()
+                        continue
+                else:
+                    print(line)
+                    line = file_r.readline()
+                    continue
+            else:
+                print(line)
+                line = file_r.readline()
+                continue
+        else:
+            print(line)
+            line = file_r.readline()
+            continue
+    elif line[0:14] == 'Catalog Number':
+        print(line)
+        file_w.write(line)
+        line = file_r.readline()
+        if line[0:11] == 'Description':
+            print(line)
+            file_w.write(line)
+            line = file_r.readline()
+            if line[0:7] == 'Credits':
+                print(line)
+                file_w.write(line)
+                file_w.write('\n')
+                line = file_r.readline()
+                if line[0:6] == 'Prereq':
+                    print(line)
+                    file_w.write(line)
+                    file_w.write('\n')
+                    line = file_r.readline()
+                    continue
+                else:
+                    print(line)
+                    line = file_r.readline()
+                    continue
+            else:
+                print(line)
+                line = file_r.readline()
+                continue
+        else:
+            print(line)
+            line = file_r.readline()
+            continue
+    else:
+        print(line)
+        line = file_r.readline()
+        continue
+
+file_w.close()
+file_r.close()
+print("Completed")
+
+
