@@ -34,28 +34,42 @@ while 1:
         continue
     elif word == 'subject_id":"':
         file_write.write("Subject ID: ")
-        file_write.write(file_read.read(4))
+        char_sub = file_read.read(1)
+        while char_sub != '"':
+            file_write.write(char_sub)
+            char_sub = file_read.read(1)
         file_write.write('\n')
         word = ""
     elif word == 'catalog_number":"':
         file_write.write("Catalog Number: ")
-        file_write.write(file_read.read(6))
+        char_cat = file_read.read(1)
+        while char_cat != '"':
+            file_write.write(char_cat)
+            char_cat = file_read.read(1)
         file_write.write("\n")
         word = ""
     elif word == 'credits_maximum":"':
         file_write.write("Credits: ")
-        file_write.write(file_read.read(1))
+        char_cre = file_read.read(1)
+        while char_cre != '"':
+            file_write.write(char_cre)
+            char_cre = file_read.read(1)
         file_write.write("\n")
         word = ""
     elif word == "prereq: ":
         file_write.write("Prereq: ")
+        char_pre = file_read.read(1)
+        while char_pre != '"':
+            file_write.write(char_pre)
+            char_pre = file_read.read(1)
         file_write.write("\n")
         word = ""
     elif word == 'description":"':
         file_write.write("Description: ")
-    # char_des = file_read.read(1)
-    # while(char_des != '"'):
-    #    file_write.write(char)
+        char_des = file_read.read(1)
+        while char_des != '"':
+            file_write.write(char_des)
+            char_des = file_read.read(1)
         file_write.write("\n")
         word = ""
     else:
